@@ -11,5 +11,5 @@ class BlogPost(models.Model):
     Created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.blog_title} written by {self.author}"
+        return f"{self.Blog_Title} written by {self.Author}"
     

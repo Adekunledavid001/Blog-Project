@@ -1,11 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Full content page -->
+    <div class="container">
+        <h3>{{ posts.Blog_Title }}</h3>
+        <p><em>Written by: <span>{{posts.Author}}</span></em></p>
+        <p>
+        {{posts.Content}}
+        </p>
+        <p>Created Date: {{posts.Created_at}}</p>
+        <p>
+            <button type="submit" class="btn btn-primary ">
+                <a href="{% url 'update_content' pk=posts.id %}" class="text-dark text-decoration-none">Update Blog</a>
+            </button>
+        </p>
+        <p>
+            <button type="submit" class="btn btn-primary ">
+                <a href="{% url 'delete_content' pk=posts.id %}" class="text-dark text-decoration-none">Delete Blog</a>
+            </button>
+        </p>
+
+        <p>
+            <a href="{% url 'blogs' %}">return to blog</a>
+        </p>
+    </div>
+
+
+{% endblock content %}

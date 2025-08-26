@@ -16,13 +16,22 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
-from work2App import views
+from django.urls import path
+from blog import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("",views.home_page,name="home"),
 
-    path("",include("blog.urls"),name=""),
+    path("blogs/",views.bloglist_page,name='blogs'),
+    # the full content view page of the specified primary key(pk) is sent to the web
+    path("full_content/<int:pk>/",views.full_content_page,name="full_content"),
+    path("update_content/<int:pk>/",views.blog_update_page,name="update_content"),
+    path("delete_content/<int:pk>/delete",views.blog_delete_page,name="delete_content"),
 
+    path("createblog/",views.createblog_page,name="createblog"),    
 ]
+ 
+# path("full_content/<int:pk>/", views.full_content, name="full_content"),
+# path("blog_update/<int:pk>/", views.blog_update, name="update")
+# path("blog_delete/<int:pk>/delete", views.blog_delete, name="delete")
